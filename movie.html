@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>豆瓣Top250评分</title>
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="static/assets/css/style-starter.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+  <body id="home">
+<section class=" w3l-header-4 header-sticky">
+    <header class="absolute-top">
+        <div class="container-fluid pr-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <h1><a class="navbar-brand" href="temp.html"><span class="fa fa-university mr-1" aria-hidden="true"></span>豆瓣T250分析</a></h1>
+            <button class="navbar-toggler bg-gradient collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="fa icon-expand fa-bars"></span>
+				<span class="fa icon-close fa-times"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item @@home__active">
+                        <a class="nav-link" href="/index">首页 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item @@about__active">
+                        <a class="nav-link" href="/movie">电影</a>
+                    </li>
+                    <li class="nav-item @@contact__active">
+                        <a class="nav-link" href="/score">评分</a>
+                    </li>
+                    <li class="nav-item @@contact__active">
+                        <a class="nav-link" href="/word">词云</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        </nav>
+    </div>
+      </header>
+</section>
+<section class="w3l-specification-6">
+    <div class="specification-layout editContent">
+        <div class="container">
+            <div class="main-titles-head ">
+                <h3 class="header-name editContent">
+					豆瓣电影Top250电影
+                </h3>
+
+            </div>
+                <table class="table table-striped"><!--样式-->
+                    <tr>
+                        <td>排名</td>
+                        <td>电影中文名称</td>
+                        <td>电影外国名称</td>
+                        <td>评分</td>
+                        <td>评价人数</td>
+                        <td>一句话概述</td>
+                        <td>其他信息</td>
+                    </tr>
+                    {% for movie in movies %}
+                        <tr>
+                            <td>{{ movie[0]}}</td>
+                            <td>
+                                <a href="{{ movie[1]}}" target="_blank"><!--原网页不会被覆盖到-->
+                                {{ movie[3]}}
+                                </a>
+                            </td>
+                            <td>{{ movie[4]}}</td>
+                            <td>{{ movie[5]}}</td>
+                            <td>{{ movie[6]}}</td>
+                            <td>{{ movie[7]}}</td>
+                            <td>{{ movie[8]}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div>
+</section>
+
+<script src="static/assets/js/jquery-3.3.1.min.js"></script> <!-- Common jquery plugin -->
+<!--bootstrap working-->
+<script src="static/assets/js/bootstrap.min.js"></script>
+<!-- //bootstrap working-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+$(function () {
+  $('.navbar-toggler').click(function () {
+    $('body').toggleClass('noscroll');
+  })
+});
+</script>
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+	<span class="fa fa-long-arrow-up"></span>
+</button>
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function () {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("movetop").style.display = "block";
+		} else {
+			document.getElementById("movetop").style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+</script>
+<!-- /move top -->
+</body>
+
+</html>
